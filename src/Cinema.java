@@ -47,12 +47,11 @@ public class Cinema {
             int k = scanner.nextInt();
             if (n > array.length - 1 || k > array[0].length - 1 || n < 0 || k < 0) {
                 System.out.println("Wrong input1");
-                continue;
             } else {
                 if (Objects.equals(array[n][k], "B")) {
                     System.out.println("That ticket has already been purchased!");
                 } else {
-                    int ticketCost = 0;
+                    int ticketCost;
                     if (a * b <= 60) {
                         ticketCost = 10;
                     } else if (n <= a / 2) {
@@ -65,7 +64,7 @@ public class Cinema {
                     array[n][k] = "B";
                     tickets++;
                     currentIncome += ticketCost;
-                    percentage = (float) ((float) tickets / (a * b) * 100);
+                    percentage = ((float) tickets / (a * b) * 100);
                     isTrue = false;
                 }
             }
