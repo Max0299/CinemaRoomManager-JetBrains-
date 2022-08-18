@@ -2,32 +2,35 @@ import java.util.Objects;
 
 import java.util.Scanner;
 
-class Main {
+public class Cinema {
 
     static int tickets = 0;
     static float percentage = 0;
     static int currentIncome = 0;
     static int totalIncome = 0;
 
+    static Scanner scanner = new Scanner(System.in);
+
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of rows:");
-        int a = scanner.nextInt();
+        int rows = scanner.nextInt();
         System.out.println("Enter the number of seats in each row:");
-        int b = scanner.nextInt();
+        int seats = scanner.nextInt();
 
-        String[][] array = createCinema(a, b);
+        String[][] array = createCinema(rows, seats);
 
+        showMenu(array,rows,seats);
+    }
+
+    public static void showMenu(String[][] array, int rows, int seats){
         boolean isTrue = true;
-
-
         while (isTrue) {
             System.out.println("\n1. Show the seats \n2. Buy a ticket \n3. Statistics \n0. Exit");
             switch (scanner.nextInt()) {
                 case 1 -> printCinema(array);
-                case 2 -> buyTicket(array, a, b);
+                case 2 -> buyTicket(array, rows, seats);
                 case 3 -> getStatistic();
                 case 0 -> isTrue = false;
             }
@@ -113,5 +116,6 @@ class Main {
         System.out.printf("Current income: $%d", currentIncome);
         System.out.println();
         System.out.printf("Total income: $%d", totalIncome);
+        System.out.println();
     }
 }
